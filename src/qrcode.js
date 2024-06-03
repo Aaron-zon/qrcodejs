@@ -220,7 +220,6 @@ var QRCode;
 	})();
 
 	var useSVG = document.documentElement.tagName.toLowerCase() === "svg";
-
 	// Drawing in DOM by using Table tag
 	var Drawing = useSVG ? svgDrawer : !_isSupportCanvas() ? (function () {
 		var Drawing = function (el, htOption) {
@@ -278,10 +277,10 @@ var QRCode;
 			this._elImage.style.display = "block";
 			this._elCanvas.style.display = "none";			
 		}
-		
-		// Android 2.1 bug workaround
+
+    // Android 2.1 bug workaround
 		// http://code.google.com/p/android/issues/detail?id=5141
-		if (this._android && this._android <= 2.1) {
+		if (this && this._android && this._android <= 2.1) {
 	    	var factor = 1 / window.devicePixelRatio;
 	        var drawImage = CanvasRenderingContext2D.prototype.drawImage; 
 	    	CanvasRenderingContext2D.prototype.drawImage = function (image, sx, sy, sw, sh, dx, dy, dw, dh) {
@@ -612,3 +611,5 @@ var QRCode;
 	 */
 	QRCode.CorrectLevel = QRErrorCorrectLevel;
 })();
+
+export default QRCode;
